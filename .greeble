@@ -1,0 +1,13 @@
+setFlags(
+    globIndent=allMan, # (See: [https://en.wikipedia.org/wiki/Indentation_style])
+    ifIndent=kR
+)
+
+# This is a comment
+
+%interpreter(
+    client=main,
+    abstractExpression=expression,
+    terminalExpression=terminalExpr,
+    nonTerminalExpression=nonTerminalExpr
+)%
