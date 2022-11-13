@@ -8,7 +8,7 @@ This allows the developer to construct the overall architecture of the program, 
 ## Getting started
 Once Greeble is installed in your system, simply create a directory where your project will be installed, containing a `.greeble` configuration file.
 
-Once you've set up your `.greeble` file with all classes and patterns, simply run the `greeble` command from within that directory.
+Once you've set up your `.greeble` file with all classes and patterns, run the `greeble` command from within that directory.
 
 ```sh
 mkdir yourProject

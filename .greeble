@@ -1,13 +1,53 @@
+# Set generation parameters
 setFlags(
-    globIndent=allMan, # (See: [https://en.wikipedia.org/wiki/Indentation_style])
-    ifIndent=kR
+    globIndent=allMan, # targeted parameter assignment
+    specificIndent=(if, kR) # tuple
 )
 
-# This is a comment
-
+# TODO: Consider cleaner syntax for composing patterns
 %interpreter(
+    name="Greeble Config",
     client=main,
     abstractExpression=expression,
     terminalExpression=terminalExpr,
-    nonTerminalExpression=nonTerminalExpr
+    nonTerminalExpression=nonTerminalExpr<
+        children=`std::vector<expression> children` #specify important subproperty for pattern
+    >
 )%
+
+# Define floating classes
+class Command
+# OR many floating classes
+class [
+   Command1,
+   Command2,
+   Command3
+] : Command
+{
+    public:
+        void execute(expression e);
+}
+
+# Specify additional properties to add to a class
+Command2 +{
+    `std::string toString()`
+}+
+
+# Specify exclusive properties to remove from a class
+Command1 -{
+    execute(expression)
+}-
+
+%flyweight(
+    name="Entity Flyweight",
+    flyweight=Entity,
+    concreteFlyweight=[Troop, Vehicle]
+)%
+
+# Link two design patterns on an element
+pattern(name="Greeble Config") <=> pattern(name="Entity Flyweight") : {
+    abstractExpression -> flyweight
+}
+
+
+
